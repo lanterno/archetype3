@@ -12,6 +12,46 @@ django = "^5.0.7"
 [tool.poetry.group.dev.dependencies]
 ipython = "^8.26.0"
 black = "^24.8.0"
+pylint-django = "^2.5.5"
+pylint = "^3.2.6"
+
+[tool.pylint]
+disable = [
+    "C0114",  # Missing module docstring
+    "C0115",  # Missing class docstring
+    "C0116",  # Missing function or method docstring
+    "E0307",  # Invalid str returned - doesn't take into account django model fields
+    "R0903",  # Too few public methods (useful for data classes)
+    "R0801",  # Duplicate code (can be too aggressive)
+    "R0901",  # Too many ancestors
+]
+
+# Format settings
+max-line-length = 120  # Adjust line length to your team's standards
+good-names = ["i", "j", "k", "e", "f", "n", "df", "args", "kwargs"]  # Common short names
+
+
+# Plugin settings (Optional: include additional pylint plugins)
+load-plugins = [
+    "pylint.extensions.mccabe",
+    "pylint.extensions.docparams",  # Checks for missing docstring params
+    "pylint.extensions.typing",  # Type hints analysis
+    "pylint_django",  # Django specific checks
+]
+
+# Django specific settings
+django-settings-module = "config.settings"  # Replace with your actual settings module
+
+# Miscellaneous settings
+notes = ["FIXME", "TODO", "HACK", "XXX"]  # Recognized markers in comments
+output-format = "colorized"  # Colored output for better readability in terminals
+
+# Logging configuration
+logging-format-style = "new"  # Use f-string style for logging
+
+
+[tool.black]
+line-length = 120
 
 [build-system]
 requires = ["poetry-core"]
