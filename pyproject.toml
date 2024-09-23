@@ -15,12 +15,22 @@ djoser = "^2.2.3"
 dj-database-url = "^2.2.0"
 psycopg = {extras = ["binary", "pool"], version = "*"} 
 django-extensions = "^3.2.3"
+pytest = "^8.3.3"
+pytest-django = "^4.9.0"
 
 [tool.poetry.group.dev.dependencies]
 ipython = "^8.26.0"
 black = "^24.8.0"
 pylint-django = "^2.5.5"
 pylint = "^3.2.6"
+
+[tool.pytest.ini_options]
+log_cli = 0
+minversion = "6.0"
+log_cli_level = 'INFO'
+DJANGO_SETTINGS_MODULE = "config.settings"
+python_files = ["test_*.py", "*_test.py", "tests.py"]
+addopts = "--ignore-glob=**/*/__init__.py"
 
 [tool.pylint]
 disable = [
