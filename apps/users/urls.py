@@ -1,5 +1,4 @@
 from django.urls import path
-
 from djoser import views
 
 from .views import UserProfileView

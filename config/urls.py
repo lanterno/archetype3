@@ -1,10 +1,8 @@
 from django.contrib import admin
-from django.urls import path, include
-
+from django.urls import include, path
 from rest_framework import routers
 
 from apps.common.views import APISchemaView, SwaggerUIView
-
 
 router = routers.SimpleRouter(trailing_slash=False)
 

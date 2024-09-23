@@ -75,9 +75,7 @@ class HistoricalItemDescriptionSource(models.Model):
 
 class HistoricalItemDescription(models.Model):
     historical_item = models.ForeignKey(HistoricalItem, on_delete=models.CASCADE)
-    source = models.ForeignKey(
-        HistoricalItemDescriptionSource, on_delete=models.CASCADE
-    )
+    source = models.ForeignKey(HistoricalItemDescriptionSource, on_delete=models.CASCADE)
     content = models.TextField()
 
 
