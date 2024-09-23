@@ -1,0 +1,75 @@
+paths:
+  /api/v1/token/login:
+    post:
+      operationId: users-login
+      tags:
+        - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+          description: ''
+        '400':
+          description: Wrong credentials
+  /api/v1/users/logout:
+    post:
+      operationId: users-logout
+      tags:
+        - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+        required: true
+      security:
+        - api_key: [ ]
+      responses:
+        '204':
+          description: No response body
+  /api/v1/users/profile:
+    get:
+      operationId: users-profile
+      tags:
+        - users
+      security:
+        - api_key: [ ]
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+          description: ''
+        '401':
+          description: Unauthorized
+
+components:
+  schemas:
+    UserProfile:
+      type: object
+      properties:
+        id: 
+          type: string
+        email:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
