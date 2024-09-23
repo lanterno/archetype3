@@ -1,0 +1,27 @@
+openapi: 3.0.3
+info:
+  title: ArcheType V3
+  version: 1.0.0 (v1)
+paths:
+  /api/v1/schema/:
+    get:
+      operationId: placeholder
+      security:
+        - api_key: []
+      responses:
+        204:
+          description: No response body
+      tags:
+        - docs
+components:
+  schemas:
+    docs:
+      type: object
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: token
+      in: header
+tags:
+  - name: docs
+    description: API documentation in OpenAPI format
