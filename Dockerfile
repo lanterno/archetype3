@@ -5,31 +5,26 @@ ENV PYTHONUNBUFFERED=true
 LABEL org.opencontainers.image.source="https://github.com/lanterno/archetype3"
 LABEL authors="ahmed.elghareeb@proton.com"
 
-FROM python as deps_installer
+FROM python as deps_builder
 
-ENV POETRY_HOME="/poetry"
+WORKDIR /deps
+ENV POETRY_VIRTUALENVS_IN_PROJECT=true
+ENV POETRY_HOME=/deps/.poetry
 ENV PATH="${POETRY_HOME}/bin:${PATH}"
 RUN python -c 'from urllib.request import urlopen; print(urlopen("https://install.python-poetry.org").read().decode())' | python -
 
-COPY pyproject.toml .
-COPY poetry.lock .
+COPY pyproject.toml ./
+COPY poetry.lock ./
 
-ENV POETRY_VIRTUALENVS_IN_PROJECT=true
-RUN poetry config virtualenvs.create true
 RUN poetry config installer.max-workers 10
-RUN poetry install --no-interaction --no-ansi
+RUN poetry install --no-interaction --no-ansi -vvv
 
 FROM python as runtime
+COPY --from=deps_builder /deps/.venv /deps/.venv
 
-# Copy only necessary files from the deps_installer stage
 WORKDIR /src
 COPY . ./
-
-COPY --from=deps_installer /.venv /deps/.venv
-
-# Set the PATH to include the virtual environment
 ENV PATH="/deps/.venv/bin:$PATH"
-
 EXPOSE 80
 
-CMD ["uvicorn", "config.asgi:application", "--host", "0.0.0.0", "--port", "80"]
+CMD ["gunicorn", "config.wsgi:application" , "--bind", "0.0.0.0:80", "--workers", "4"]
