@@ -20,7 +20,8 @@ components:
   securitySchemes:
     api_key:
       type: apiKey
-      name: token
+      description: "value should start with 'Token' followed by a space then the token"
+      name: Authorization
       in: header
 tags:
   - name: docs

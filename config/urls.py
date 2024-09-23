@@ -8,7 +8,7 @@ router = routers.SimpleRouter(trailing_slash=False)
 
 urlpatterns = [
     path("api/v1/", include(router.urls)),
-    path("api/v1/auth", include("apps.users.urls")),
+    path("api/v1/auth/", include("apps.users.urls")),
     path("admin/", admin.site.urls),
     path("api/v1/schema/", APISchemaView.as_view(), name="doc-schema"),
     path("api/v1/docs/", SwaggerUIView.as_view(), name="doc-ui"),

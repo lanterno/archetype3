@@ -25,10 +25,7 @@ SECRET_KEY = "django-insecure-ejszst4k4nejn-3%&#r949o=gomg3+q@q_(s98xk^05p-_q7i4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
-
-
-# Application definition
+ALLOWED_HOSTS = ["archetype3.onrender.com", "localhost"]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -39,6 +36,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # 3rd-party apps
     "rest_framework",
+    "rest_framework.authtoken",
     "djoser",
     "django_extensions",
     # project apps
