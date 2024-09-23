@@ -36,6 +36,7 @@ DEBUG = env("DEBUG")
 
 ALLOWED_HOSTS = ["archetype3.onrender.com", "localhost"]
 CORS_ALLOWED_ORIGINS = ["https://archetype3.onrender.com", "http://localhost:3000", "http://localhost:8000"]
+CSRF_TRUSTED_ORIGINS = ["https://archetype3.onrender.com", "http://localhost:8000"]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -45,7 +46,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     # 3rd-party apps
     "corsheaders",
-    "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
     "rest_framework",
     "rest_framework.authtoken",
