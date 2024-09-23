@@ -1,0 +1,28 @@
+name: archetype
+services:
+  postgres:
+    image: postgres:alpine
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_HOST=localhost
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=local
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+  api:
+    image: ghcr.io/lanterno/archetype:latest
+    build: .
+    environment:
+      DJANGO_SETTINGS_MODULE: config.settings
+    command: python manage.py runserver 0.0.0.0:80
+    env_file: ${API_ENV_FILE:-config/.env}
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/src
+    depends_on:
+      - postgres
+  
+volumes:
+  postgres:
