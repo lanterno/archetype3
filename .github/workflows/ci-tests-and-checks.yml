@@ -21,7 +21,7 @@ jobs:
       - name: Install Dependencies
         run: |
           pip install poetry
-          poetry install --only linters --no-interaction --no-ansi -vvv
+          poetry install --no-interaction --no-ansi -vvv
 
       - name: Run Lint
         run: |
