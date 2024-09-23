@@ -54,9 +54,7 @@ INSTALLED_APPS = [
     # project apps
     "apps.common",
     "apps.users",
-    "apps.blog",
-    "apps.events",
-    "apps.news",
+    "apps.publications",
     "apps.scribes",
     "apps.handwriting",
     "apps.manuscripts",

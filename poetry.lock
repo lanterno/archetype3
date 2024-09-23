@@ -468,6 +468,16 @@ files = [
 Django = ">=3.2"
 
 [[package]]
+name = "django-froala-editor"
+version = "4.2.2"
+description = "django-froala-editor package helps integrate Froala WYSIWYG HTML editor with Django."
+optional = false
+python-versions = "*"
+files = [
+    {file = "django-froala-editor-4.2.2.tar.gz", hash = "sha256:264fd0babd7c1b4d5c20b6a25e35c7a97a3ecce551304847f0c5c03e9559fac3"},
+]
+
+[[package]]
 name = "django-templated-mail"
 version = "1.1.1"
 description = "Send emails using Django template system."
@@ -1482,4 +1492,4 @@ brotli = ["brotli"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "10ff34e3ccf884a46d8bcddb484aa52a9ba464c8c287af9fe3dd6af6d1c7b7f5"
+content-hash = "bf6d2a5c25956f74f3b836573a7fc70ba02f4da1f0b13b9281e18309e4bad973"
