@@ -28,6 +28,7 @@ class Graph(models.Model):
     item_image = models.ForeignKey("manuscripts.ItemImage", on_delete=models.CASCADE)
     location = models.JSONField()
     allograph = models.ForeignKey(Allograph, on_delete=models.CASCADE)
+    components = models.ManyToManyField("Component")
 
 
 class Feature(models.Model):
