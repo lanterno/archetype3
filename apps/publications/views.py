@@ -1,8 +1,8 @@
-from rest_framework.viewsets import GenericViewSet
 from rest_framework.mixins import ListModelMixin, RetrieveModelMixin
+from rest_framework.viewsets import GenericViewSet
 
-from .serializers import EventListSerializer, EventDetailSerializer, PublicationListSerializer, PublicationDetailSerializer
 from .models import Event, Publication
+from .serializers import EventDetailSerializer, EventListSerializer, PublicationDetailSerializer, PublicationListSerializer
 
 
 class EventViewSet(GenericViewSet, ListModelMixin, RetrieveModelMixin):

@@ -1,7 +1,6 @@
 from django.contrib import admin
 
-from .models import Scribe, Script, Hand, HandToItemPartImages
-
+from .models import Hand, HandToItemPartImages, Scribe, Script
 
 admin.site.register(Scribe)
 admin.site.register(Script)

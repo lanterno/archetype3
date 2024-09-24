@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Event, Publication, Comment
+from .models import Comment, Event, Publication
 
 
 class EventListSerializer(serializers.ModelSerializer):

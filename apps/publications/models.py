@@ -1,8 +1,7 @@
-from django.db import models
-from froala_editor.fields import FroalaField
 from django.contrib.postgres.fields import ArrayField
+from django.db import models
 from django_extensions.db.fields import AutoSlugField
-
+from froala_editor.fields import FroalaField
 from taggit.managers import TaggableManager
 
 

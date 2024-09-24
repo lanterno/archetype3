@@ -1,17 +1,17 @@
 from django.contrib import admin
 
 from .models import (
-    ItemFormat,
-    Repository,
-    CurrentItem,
-    HistoricalItem,
-    HistoricalItemDescriptionSource,
-    HistoricalItemDescription,
-    ItemPart,
     Catalogue,
     CatalogueNumber,
-    ItemImage,
+    CurrentItem,
+    HistoricalItem,
+    HistoricalItemDescription,
+    HistoricalItemDescriptionSource,
     ImageText,
+    ItemFormat,
+    ItemImage,
+    ItemPart,
+    Repository,
 )
 
 admin.site.register(ItemFormat)
