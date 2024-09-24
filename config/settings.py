@@ -148,8 +148,10 @@ AUTH_USER_MODEL = "users.User"
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 STATIC_URL = "static/"
+MEDIA_URL = "media/"
+MEDIA_ROOT = "storage/media/"
+STATIC_ROOT = BASE_DIR / "storage/staticfiles"
 
-STATIC_ROOT = BASE_DIR / "staticfiles"
 STORAGES = {
     "default": {
         "BACKEND": "django.core.files.storage.FileSystemStorage",

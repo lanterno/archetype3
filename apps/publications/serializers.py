@@ -50,4 +50,4 @@ class PublicationDetailSerializer(PublicationListSerializer):
 
     class Meta:
         model = Publication
-        fields = PublicationListSerializer + ["content", "comments"]
+        fields = PublicationListSerializer.Meta.fields + ["content", "comments"]
