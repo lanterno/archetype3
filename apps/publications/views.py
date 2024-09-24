@@ -25,4 +25,4 @@ class PublicationViewSet(GenericViewSet, ListModelMixin, RetrieveModelMixin):
         return PublicationDetailSerializer
 
     def get_queryset(self):
-        return Publication.objects.filter(is_published=True)
+        return Publication.objects.filter(status=Publication.Status.PUBLISHED)
