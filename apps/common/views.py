@@ -10,6 +10,7 @@ class APISchemaView(APIView):
         core_file = settings.BASE_DIR / "apps/common/schema.yaml"
         supporting_files = [
             settings.BASE_DIR / "apps/users/schema.yaml",
+            settings.BASE_DIR / "apps/publications/schema.yaml",
         ]
         with open(core_file, encoding="utf-8") as file:
             core_object = yaml.load(file.read(), Loader=yaml.Loader)

@@ -1,0 +1,151 @@
+paths:
+  /api/v1/media/events/:
+    get:
+      operationId: events-list
+      responses:
+        200:
+          description: No response body
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  events:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/eventListItem'
+      tags:
+        - events
+  /api/v1/media/events/{id}/:
+    get:
+      operationId: events-detail
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/eventDetailItem'
+      tags:
+        - events
+  /api/v1/media/publications/:
+    get:
+      operationId: publications-list
+      responses:
+        200:
+          description: No response body
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  publications:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/publicationListItem'
+      tags:
+        - publications
+  /api/v1/media/publications/{id}/:
+    get:
+      operationId: publications-detail
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/publicationDetailItem'
+      tags:
+        - publications
+components:
+  schemas:
+    eventListItem:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+    eventDetailItem:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        content:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+    publicationListItem:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        slug:
+          type: string
+        author:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+        number_of_comments:
+          type: integer
+        published_at:
+          type: string
+          format: date-time
+        preview:
+          type: string
+    publicationDetailItem:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        slug:
+          type: string
+        author:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+        number_of_comments:
+          type: integer
+        published_at:
+          type: string
+          format: date-time
+        content:
+          type: string
+        comments:
+          type: array
+          items:
+            type: object
+            properties:
+              author_name:
+                type: string
+              content:
+                type: string
+              created_at:
+                type: string
+                format: date-time
+tags:
+  - name: events
+  - name: publications
