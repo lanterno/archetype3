@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
     "djoser",
     "django_extensions",
-    "froala_editor",
+    "tinymce",
     "taggit",
     # project apps
     "apps.common",

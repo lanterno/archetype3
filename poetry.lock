@@ -468,16 +468,6 @@ files = [
 Django = ">=3.2"
 
 [[package]]
-name = "django-froala-editor"
-version = "4.2.2"
-description = "django-froala-editor package helps integrate Froala WYSIWYG HTML editor with Django."
-optional = false
-python-versions = "*"
-files = [
-    {file = "django-froala-editor-4.2.2.tar.gz", hash = "sha256:264fd0babd7c1b4d5c20b6a25e35c7a97a3ecce551304847f0c5c03e9559fac3"},
-]
-
-[[package]]
 name = "django-taggit"
 version = "6.0.0"
 description = "django-taggit is a reusable Django application for simple tagging."
@@ -501,6 +491,20 @@ files = [
     {file = "django-templated-mail-1.1.1.tar.gz", hash = "sha256:8db807effebb42a532622e2d142dfd453dafcd0d7794c4c3332acb90656315f9"},
     {file = "django_templated_mail-1.1.1-py3-none-any.whl", hash = "sha256:f7127e1e31d7cad4e6c4b4801d25814d4b8782627ead76f4a75b3b7650687556"},
 ]
+
+[[package]]
+name = "django-tinymce"
+version = "4.1.0"
+description = "A Django application that contains a widget to render a"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "django_tinymce-4.1.0-py3-none-any.whl", hash = "sha256:9804836e6d2b08de3b03a27c100f8c2e9633549913eff8b323678a10cd48b94e"},
+    {file = "django_tinymce-4.1.0.tar.gz", hash = "sha256:02e3b70e940fd299f0fbef4315aee5c185664e1eb8cd396b176963954e4357c9"},
+]
+
+[package.dependencies]
+django = ">=3.2"
 
 [[package]]
 name = "djangorestframework"
@@ -1506,4 +1510,4 @@ brotli = ["brotli"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "f6937d15f62e62b7ab8558ba1b5db55ce6260b6381c7de31b7006c368500ddaa"
+content-hash = "329eedd2785970df2800a454e0a963b67f0589699978d3dd73eeacdcf5985918"

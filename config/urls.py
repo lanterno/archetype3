@@ -2,7 +2,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
-from froala_editor import views
 from rest_framework import routers
 
 from apps.common.views import APISchemaView, SwaggerUIView
@@ -17,7 +16,7 @@ urlpatterns = (
         path("admin/", admin.site.urls),
         path("api/v1/schema/", APISchemaView.as_view(), name="doc-schema"),
         path("api/v1/docs/", SwaggerUIView.as_view(), name="doc-ui"),
-        path("froala_editor/", include("froala_editor.urls")),
+        path("tinymce/", include("tinymce.urls")),
     ]
     + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

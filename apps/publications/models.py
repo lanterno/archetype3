@@ -1,14 +1,14 @@
 from django.contrib.postgres.fields import ArrayField
 from django.db import models
 from django_extensions.db.fields import AutoSlugField
-from froala_editor.fields import FroalaField
 from taggit.managers import TaggableManager
+from tinymce.models import HTMLField
 
 
 class Event(models.Model):
     title = models.CharField(max_length=150)
     slug = models.SlugField(max_length=150, unique=True)
-    content = FroalaField()
+    content = HTMLField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -26,8 +26,8 @@ class Publication(models.Model):
 
     title = models.CharField(max_length=350)
     slug = models.SlugField(max_length=150, unique=True)
-    content = FroalaField()
-    preview = FroalaField()
+    content = HTMLField()
+    preview = HTMLField()
 
     author = models.ForeignKey("users.User", on_delete=models.CASCADE)
 
