@@ -1,5 +1,7 @@
 from rest_framework import serializers
 
+from apps.users.models import User
+
 from .models import Comment, Event, Publication
 
 
@@ -17,7 +19,7 @@ class EventDetailSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = "users.User"
+        model = User
         fields = ("id", "first_name", "last_name")
 
 
@@ -31,7 +33,7 @@ class PublicationListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Publication
-        fields = ["id", "title", "slug", "preview" "author", "number_of_comments", "published_at", "created_at"]
+        fields = ["id", "title", "slug", "preview", "author", "number_of_comments", "published_at", "created_at"]
 
 
 class CommentSerializer(serializers.ModelSerializer):

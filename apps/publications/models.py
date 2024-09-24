@@ -55,7 +55,7 @@ class Publication(models.Model):
 
 
 class Comment(models.Model):
-    post = models.ForeignKey(Publication, on_delete=models.CASCADE)
+    post = models.ForeignKey(Publication, on_delete=models.CASCADE, related_name="comments")
     content = models.TextField()
 
     author_name = models.CharField(max_length=150)

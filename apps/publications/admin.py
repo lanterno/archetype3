@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Event, Publication
+from .models import Comment, Event, Publication
 
 
 class EventAdmin(admin.ModelAdmin):
@@ -37,5 +37,12 @@ class PublicationAdmin(admin.ModelAdmin):
         return form
 
 
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ("id", "author_name", "author_email", "is_approved", "created_at")
+    search_fields = ["author_name", "author_email", "content"]
+    list_filter = ["created_at", "is_approved"]
+
+
 admin.site.register(Event, EventAdmin)
 admin.site.register(Publication, PublicationAdmin)
+admin.site.register(Comment, CommentAdmin)
