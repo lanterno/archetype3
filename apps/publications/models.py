@@ -67,5 +67,8 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return f"{self.author_name} -> {self.post.title}"
+
     class Meta:
         ordering = ["-created_at"]
