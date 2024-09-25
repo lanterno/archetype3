@@ -23,6 +23,9 @@ class Repository(models.Model):
     def __str__(self):
         return self.label
 
+    class Meta:
+        verbose_name_plural = "Repositories"
+
 
 class CurrentItem(models.Model):
     description = models.TextField()
