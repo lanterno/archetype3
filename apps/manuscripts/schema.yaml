@@ -1,0 +1,29 @@
+paths:
+  /api/v1/manuscripts/item-parts/{id}/:
+    get:
+      operationId: item-part-list
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemPart'
+      tags:
+        - manuscripts
+components:
+  schemas:
+    ItemPart:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+tags:
+  - name: manuscripts

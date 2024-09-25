@@ -1,0 +1,29 @@
+paths:
+  /api/v1/handwriting/characters/{id}/:
+    get:
+      operationId: scribes-list
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Character'
+      tags:
+        - handwriting
+components:
+  schemas:
+    Character:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+tags:
+  - name: handwriting
