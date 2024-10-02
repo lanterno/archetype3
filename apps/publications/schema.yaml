@@ -36,6 +36,22 @@ paths:
   /api/v1/media/publications/:
     get:
       operationId: publications-list
+      parameters:
+        - name: is_blog_post
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: is_news
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: is_featured
+          in: query
+          required: false
+          schema:
+            type: boolean
       responses:
         200:
           description: No response body

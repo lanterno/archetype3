@@ -1,3 +1,4 @@
+from django_filters import rest_framework as filters
 from rest_framework.mixins import ListModelMixin, RetrieveModelMixin
 from rest_framework.viewsets import GenericViewSet
 
@@ -18,6 +19,9 @@ class EventViewSet(GenericViewSet, ListModelMixin, RetrieveModelMixin):
 class PublicationViewSet(GenericViewSet, ListModelMixin, RetrieveModelMixin):
     queryset = Publication.objects.all()
     serializer_class = PublicationDetailSerializer
+
+    filter_backends = [filters.DjangoFilterBackend]
+    filterset_fields = ["is_blog_post", "is_news", "is_featured"]
 
     def get_serializer_class(self):
         if self.action == "list":

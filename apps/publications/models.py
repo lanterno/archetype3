@@ -1,6 +1,4 @@
-from django.contrib.postgres.fields import ArrayField
 from django.db import models
-from django_extensions.db.fields import AutoSlugField
 from taggit.managers import TaggableManager
 from tinymce.models import HTMLField
 

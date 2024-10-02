@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     "django_extensions",
     "tinymce",
     "taggit",
+    "django_filters",
     # project apps
     "apps.common",
     "apps.users",
