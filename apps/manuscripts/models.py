@@ -13,6 +13,7 @@ class Repository(models.Model):
         LIBRARY = "Library"
         INSTITUTION = "Institution"
         PERSON = "Person"
+        ONLINE_RESOURCE = "Online Resource"
 
     name = models.CharField(max_length=100)
     label = models.CharField(max_length=30)
@@ -28,12 +29,15 @@ class Repository(models.Model):
 
 
 class CurrentItem(models.Model):
-    description = models.TextField()
+    description = models.TextField(blank=True)
     repository = models.ForeignKey(Repository, on_delete=models.CASCADE)
     shelfmark = models.CharField(max_length=60)
 
     def __str__(self):
-        return f"{self.repository} {self.shelfmark}"
+        return f"{self.repository.label} {self.shelfmark}"
+
+    def number_of_parts(self):
+        return self.itempart_set.count()
 
 
 class HistoricalItem(models.Model):
@@ -43,15 +47,14 @@ class HistoricalItem(models.Model):
         LETTER = "Letter"
 
     class HairType(models.TextChoices):
-        FHFH = "FHFH"
-        FHHF = "FHHF"
-        HFFH = "HFFH"
-        HFHF = "HFHF"
-        MIXED = "Mixed"
+        FHFH = "FHFH", "FHFH"
+        FHHF = "FHHF", "FHHF"
+        HFFH = "HFFH", "HFFH"
+        HFHF = "HFHF", "HFHF"
+        MIXED = "Mixed", "Mixed"
 
     type = models.CharField(max_length=20, choices=Type.choices)
     format = models.ForeignKey(ItemFormat, null=True, on_delete=models.SET_NULL)
-    name = models.CharField(max_length=100)
     language = models.CharField(max_length=100)
 
     vernacular = models.BooleanField(null=True)
@@ -65,20 +68,12 @@ class HistoricalItem(models.Model):
     named_beneficiary = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.name
-
-
-class HistoricalItemDescriptionSource(models.Model):
-    name = models.CharField(max_length=200)
-    label = models.CharField(max_length=30)
-
-    def __str__(self):
-        return self.label
+        return f"{self.get_type_display()} - {self.id}"
 
 
 class HistoricalItemDescription(models.Model):
-    historical_item = models.ForeignKey(HistoricalItem, on_delete=models.CASCADE)
-    source = models.ForeignKey(HistoricalItemDescriptionSource, on_delete=models.CASCADE)
+    historical_item = models.ForeignKey(HistoricalItem, related_name="descriptions", on_delete=models.CASCADE)
+    source = models.ForeignKey(Repository, on_delete=models.CASCADE)
     content = models.TextField()
 
 
@@ -87,20 +82,14 @@ class ItemPart(models.Model):
     current_item = models.ForeignKey(CurrentItem, on_delete=models.CASCADE)
 
 
-class Catalogue(models.Model):
-    name = models.CharField(max_length=100)
-    label = models.CharField(max_length=30)
+class CatalogueNumber(models.Model):
+    historical_item = models.ForeignKey(HistoricalItem, related_name="catalogue_numbers", on_delete=models.CASCADE)
+    number = models.CharField(max_length=30)
+    catalogue = models.ForeignKey(Repository, on_delete=models.CASCADE)
     url = models.URLField(null=True)
 
     def __str__(self):
-        return self.label
-
-
-class CatalogueNumber(models.Model):
-    historical_item = models.ForeignKey(HistoricalItem, on_delete=models.CASCADE)
-    number = models.CharField(max_length=30)
-    catalogue = models.ForeignKey(Catalogue, on_delete=models.CASCADE)
-    url = models.URLField(null=True)
+        return f"{self.catalogue.label} {self.number}"
 
 
 class ItemImage(models.Model):
