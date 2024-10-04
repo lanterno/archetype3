@@ -110,7 +110,7 @@ class ImageText(models.Model):
         REVIEW = "Review"
         LIVE = "Live"
 
-    item_image = models.ForeignKey(ItemImage, on_delete=models.CASCADE)
+    item_image = models.ForeignKey(ItemImage, related_name="texts", on_delete=models.CASCADE)
     content = models.TextField()
     type = models.CharField(max_length=13, choices=Type.choices)
     status = models.CharField(max_length=6, choices=Status.choices)

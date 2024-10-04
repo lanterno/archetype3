@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import HistoricalItemDescription, ItemPart, Repository, CatalogueNumber, CurrentItem
+from .models import HistoricalItemDescription, ItemPart, Repository, CatalogueNumber, CurrentItem, ImageText, ItemImage
 
 
 class RepositorySerializer(serializers.ModelSerializer):
@@ -98,3 +98,17 @@ class ItemPartListSerializer(serializers.ModelSerializer):
             "repository_id",
             "shelfmark",
         ]
+
+
+class ImageTextSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ImageText
+        fields = ["type", "content"]
+
+
+class ImageSerializer(serializers.ModelSerializer):
+    texts = ImageTextSerializer(many=True)
+
+    class Meta:
+        model = ItemImage
+        fields = ["id", "image", "locus", "number_of_annotations", "texts"]

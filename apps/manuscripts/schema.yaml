@@ -29,6 +29,23 @@ paths:
                 $ref: '#/components/schemas/ItemPartDetails'
       tags:
         - manuscripts
+  /api/v1/manuscripts/item-parts/{id}/images/:
+    get:
+      operationId: item-part-images-list
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemPartImage'
+      tags:
+        - manuscripts
 components:
   schemas:
     Repository:
@@ -115,5 +132,26 @@ components:
           type: string
         repository_id:
           type: integer
+    ItemPartImage:
+      type: object
+      properties:
+        id:
+          type: integer
+        image:
+          type: string
+        locus:
+          type: string
+        number_of_annotations:
+          type: integer
+        texts:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+              content:
+                type: string
+  
 tags:
   - name: manuscripts
