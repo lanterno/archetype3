@@ -99,6 +99,9 @@ class ItemImage(models.Model):
     folio_side = models.CharField(max_length=20, null=True)
     folio_number = models.CharField(max_length=20, null=True)
 
+    def number_of_annotations(self):
+        return self.graphs.count()
+
 
 class ImageText(models.Model):
     class Type(models.TextChoices):

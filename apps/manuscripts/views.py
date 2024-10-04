@@ -22,7 +22,7 @@ class ItemPartViewSet(GenericViewSet, ListModelMixin, RetrieveModelMixin):
         return ItemPartListSerializer
 
     @action(detail=True, methods=["get"])
-    def images(self, request, pk=None):
+    def images(self, *args, **kwargs):
         item_part = self.get_object()
         queryset = item_part.images.all()
 

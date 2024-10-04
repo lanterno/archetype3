@@ -25,7 +25,7 @@ class Allograph(models.Model):
 
 
 class Graph(models.Model):
-    item_image = models.ForeignKey("manuscripts.ItemImage", on_delete=models.CASCADE)
+    item_image = models.ForeignKey("manuscripts.ItemImage", related_name="graphs", on_delete=models.CASCADE)
     location = models.JSONField()
     allograph = models.ForeignKey(Allograph, on_delete=models.CASCADE)
     components = models.ManyToManyField("Component")
