@@ -1,7 +1,7 @@
 paths:
   /api/v1/scribes/{id}/:
     get:
-      operationId: scribes-list
+      operationId: scribes-details
       parameters:
         - name: id
           in: path
@@ -25,5 +25,27 @@ components:
           type: integer
         name:
           type: string
+        period:
+          type: string
+        scriptorium:
+          type: string
+        script:
+          type: object
+          properties:
+            name:
+              type: string
+        hands:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              script:
+                type: object
+                properties:
+                  name:
+                    type: string
+        
 tags:
   - name: scribes
