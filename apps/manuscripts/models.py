@@ -18,7 +18,7 @@ class Repository(models.Model):
     name = models.CharField(max_length=100)
     label = models.CharField(max_length=30)
     place = models.CharField(max_length=50)
-    url = models.URLField(null=True)
+    url = models.URLField(null=True, blank=True)
     type = models.CharField(max_length=30, choices=Type.choices, null=True)
 
     def __str__(self):
@@ -80,6 +80,9 @@ class HistoricalItemDescription(models.Model):
 class ItemPart(models.Model):
     historical_item = models.ForeignKey(HistoricalItem, on_delete=models.CASCADE)
     current_item = models.ForeignKey(CurrentItem, on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return str(self.current_item)
 
 
 class CatalogueNumber(models.Model):
