@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     "tinymce",
     "taggit",
     "django_filters",
+    "haystack",
     # project apps
     "apps.common",
     "apps.users",
@@ -181,3 +182,17 @@ LOGGING = {
         }
     },
 }
+
+# -------------- Haystack settings --------------
+HAYSTACK_CONNECTIONS = {
+    "default": {
+        "ENGINE": "haystack.backends.elasticsearch7_backend.Elasticsearch7SearchEngine",
+        "URL": "http://elasticsearch:9200/",
+        "INDEX_NAME": "haystack",
+    },
+}
+# HAYSTACK_CONNECTIONS = {
+#     "default": {
+#         "ENGINE": "haystack.backends.simple_backend.SimpleEngine",
+#     },
+# }

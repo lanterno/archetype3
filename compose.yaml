@@ -1,5 +1,12 @@
 name: archetype
 services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.10
+    environment:
+      - discovery.type=single-node
+    ports:
+      - "9200:9200"
+      - "9300:9300"
   postgres:
     image: postgres:alpine
     volumes:

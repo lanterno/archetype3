@@ -5,12 +5,17 @@ from django.urls import include, path
 from rest_framework import routers
 
 from apps.common.views import APISchemaView, SwaggerUIView
+from apps.manuscripts.search import ManuscriptSearchViewSet
+from apps.scribes.search import ScribeSearchViewSet
 
-router = routers.SimpleRouter(trailing_slash=False)
+search_router = routers.DefaultRouter(trailing_slash=False)
+search_router.register("item-parts", ManuscriptSearchViewSet, basename="item-parts")
+search_router.register("scribes", ScribeSearchViewSet, basename="scribes")
+
 
 urlpatterns = (
     [
-        path("api/v1/", include(router.urls)),
+        path("api/v1/search/", include(search_router.urls)),
         path("api/v1/auth/", include("apps.users.urls")),
         path("api/v1/media/", include("apps.publications.urls")),
         path("api/v1/manuscripts/", include("apps.manuscripts.urls")),

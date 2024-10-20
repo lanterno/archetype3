@@ -482,6 +482,25 @@ files = [
 Django = ">=4.2"
 
 [[package]]
+name = "django-haystack"
+version = "3.3.0"
+description = "Pluggable search for Django."
+optional = false
+python-versions = "*"
+files = [
+    {file = "django_haystack-3.3.0.tar.gz", hash = "sha256:e3ceed6b8000625da14d409eb4dac69894905e2ac8ac18f9bfdb59323ca02eab"},
+]
+
+[package.dependencies]
+Django = ">=3.2"
+elasticsearch = {version = ">=5,<8", optional = true, markers = "extra == \"elasticsearch\""}
+packaging = "*"
+
+[package.extras]
+elasticsearch = ["elasticsearch (>=5,<8)"]
+testing = ["coverage", "geopy (==2)", "pysolr (>=3.7)", "python-dateutil", "requests", "whoosh (>=2.5.4,<3.0)"]
+
+[[package]]
 name = "django-taggit"
 version = "6.0.0"
 description = "django-taggit is a reusable Django application for simple tagging."
@@ -522,17 +541,17 @@ django = ">=3.2"
 
 [[package]]
 name = "djangorestframework"
-version = "3.15.2"
+version = "3.15.0"
 description = "Web APIs for Django, made easy."
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=3.6"
 files = [
-    {file = "djangorestframework-3.15.2-py3-none-any.whl", hash = "sha256:2b8871b062ba1aefc2de01f773875441a961fefbf79f5eed1e32b2f096944b20"},
-    {file = "djangorestframework-3.15.2.tar.gz", hash = "sha256:36fe88cd2d6c6bec23dca9804bab2ba5517a8bb9d8f47ebc68981b56840107ad"},
+    {file = "djangorestframework-3.15.0-py3-none-any.whl", hash = "sha256:5fa616048a7ec287fdaab3148aa5151efb73f7f8be1e23a9d18484e61e672695"},
+    {file = "djangorestframework-3.15.0.tar.gz", hash = "sha256:3f4a263012e1b263bf49a4907eb4cfe14de840a09b1ba64596d01a9c54835919"},
 ]
 
 [package.dependencies]
-django = ">=4.2"
+django = ">=3.0"
 
 [[package]]
 name = "djangorestframework-simplejwt"
@@ -578,6 +597,48 @@ social-auth-app-django = ">=5.0.0,<6.0.0"
 [package.extras]
 djet = ["djet (>=0.3.0,<0.4.0)"]
 webauthn = ["webauthn (<1.0)"]
+
+[[package]]
+name = "drf-haystack"
+version = "1.9"
+description = "Makes Haystack play nice with Django REST Framework"
+optional = false
+python-versions = ">=3.7"
+files = []
+develop = false
+
+[package.dependencies]
+Django = ">=2.2,<5.2"
+django-haystack = ">=2.8,<3.4"
+djangorestframework = ">=3.12,<3.16"
+python-dateutil = "*"
+
+[package.source]
+type = "git"
+url = "https://github.com/rhblind/drf-haystack"
+reference = "HEAD"
+resolved_reference = "82a484b5a763a246e88f5e0aaad0663c0d150f9a"
+
+[[package]]
+name = "elasticsearch"
+version = "7.9.1"
+description = "Python client for Elasticsearch"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, <4"
+files = [
+    {file = "elasticsearch-7.9.1-py2.py3-none-any.whl", hash = "sha256:8c7e2374f53ee1b891ff2804116e0c7fb517585d6d5788ba668686bbc9d82e2d"},
+    {file = "elasticsearch-7.9.1.tar.gz", hash = "sha256:5e08776fbb30c6e92408c7fa8c37d939210d291475ae2f364f0497975918b6fe"},
+]
+
+[package.dependencies]
+certifi = "*"
+urllib3 = ">=1.21.1"
+
+[package.extras]
+async = ["aiohttp (>=3,<4)", "yarl"]
+develop = ["black", "coverage", "jinja2", "mock", "pytest", "pytest-cov", "pyyaml", "requests (>=2.0.0,<3.0.0)", "sphinx (<1.7)", "sphinx-rtd-theme"]
+docs = ["sphinx (<1.7)", "sphinx-rtd-theme"]
+requests = ["requests (>=2.4.0,<3.0.0)"]
 
 [[package]]
 name = "executing"
@@ -1227,6 +1288,20 @@ docs = ["sphinx", "sphinx-rtd-theme"]
 testing = ["Django", "django-configurations (>=2.0)"]
 
 [[package]]
+name = "python-dateutil"
+version = "2.9.0.post0"
+description = "Extensions to the standard Python datetime module"
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,>=2.7"
+files = [
+    {file = "python-dateutil-2.9.0.post0.tar.gz", hash = "sha256:37dd54208da7e1cd875388217d5e00ebd4179249f90fb72437e91a35459a0ad3"},
+    {file = "python_dateutil-2.9.0.post0-py2.py3-none-any.whl", hash = "sha256:a8b2bc7bffae282281c8140a97d3aa9c14da0b136dfe83f850eea9a5f7470427"},
+]
+
+[package.dependencies]
+six = ">=1.5"
+
+[[package]]
 name = "python3-openid"
 version = "3.2.0"
 description = "OpenID support for modern servers and consumers."
@@ -1524,4 +1599,4 @@ brotli = ["brotli"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "8a92ad28da491f930062e752f3a6cf5b40243ccbc272d98bbadfa646cdb2fe35"
+content-hash = "9398c15a5bcb93f0a41194ad30b17c997ca53d45112305f5fe8c4ba8f19279aa"

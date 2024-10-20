@@ -41,6 +41,8 @@ django-cors-headers = "^4.4.0"
 django-taggit = "^6.0.0"
 django-tinymce = "^4.1.0"
 django-filter = "^24.3"
+django-haystack = {extras = ["elasticsearch"], version = "^3.3.0"}
+drf-haystack = {git = "https://github.com/rhblind/drf-haystack"}
 
 [tool.poetry.group.dev.dependencies]
 ipython = "^8.26.0"
