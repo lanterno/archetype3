@@ -4,23 +4,35 @@ from apps.manuscripts.models import ItemPart
 
 class ItemPartIndex(indexes.ModelSearchIndex, indexes.Indexable):
     text = indexes.CharField(document=True, use_template=False)
-    repository_name = indexes.CharField(model_attr="current_item__repository__name")
-    repository_city = indexes.CharField(model_attr="current_item__repository__place")
+    repository_name = indexes.CharField(model_attr="current_item__repository__name", faceted=True)
+    repository_city = indexes.CharField(model_attr="current_item__repository__place", faceted=True)
     shelfmark = indexes.CharField(model_attr="current_item__shelfmark")
-    current_item = indexes.CharField(model_attr="current_item")
+    catalogue_numbers = indexes.CharField(model_attr="historical_item", faceted=True)
+    date = indexes.CharField(model_attr="historical_item__date")
+    type = indexes.CharField(model_attr="historical_item__type", faceted=True)
+    number_of_images = indexes.IntegerField(model_attr="id", faceted=True)
+    issuer_name = indexes.CharField(model_attr="historical_item__issuer", faceted=True)
+    named_beneficiary = indexes.CharField(model_attr="historical_item__named_beneficiary", faceted=True)
 
-    # 	repository_city, repository_name, Shelfmark, category_number, date,
-    #   type, number_of_parts, issuer_name, named_beneficiary
+    def prepare_number_of_images(self, obj):
+        return obj.images.count()
 
-    # Facets:
-    # Image availability: With_images, Without_images
-    # Type: Charter, Letter, Agreement..
-    # repository_city, repostory
-    # issuer_type, issuer
-    # named_beneficiary
+    def prepare_catalogue_numbers(self, obj):
+        return " ".join([str(cn) for cn in obj.historical_item.catalogue_numbers.all()])
+
     class Meta:
         model = ItemPart
-        fields = ["text", "repository_name", "repository_city", "shelfmark", "current_item"]
+        fields = [
+            "text",
+            "repository_city",
+            "repository_name",
+            "shelfmark",
+            "catalogue_numbers",
+            "date",
+            "type",
+            "number_of_images",
+            "issuer_name",
+        ]
 
     def get_model(self):
         return ItemPart

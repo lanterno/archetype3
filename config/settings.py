@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     "taggit",
     "django_filters",
     "haystack",
+    "drf_haystack",
     # project apps
     "apps.common",
     "apps.users",
