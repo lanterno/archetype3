@@ -34,6 +34,10 @@ class RepositoryAdmin(admin.ModelAdmin):
     search_fields = ["name", "label"]
 
 
+class ItemImageAdmin(admin.ModelAdmin):
+    list_display = ["id", "item_part", "locus", "folio_side", "folio_number", "image"]
+
+
 admin.site.register(HistoricalItem, HistoricalItemAdmin)
 admin.site.register(CurrentItem, CurrentItemAdmin)
 admin.site.register(ItemPart, ItemPartAdmin)
@@ -41,5 +45,5 @@ admin.site.register(ItemFormat)
 admin.site.register(Repository, RepositoryAdmin)
 admin.site.register(HistoricalItemDescription)
 admin.site.register(CatalogueNumber)
-admin.site.register(ItemImage)
+admin.site.register(ItemImage, ItemImageAdmin)
 admin.site.register(ImageText)

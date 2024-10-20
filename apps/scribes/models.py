@@ -40,3 +40,6 @@ class Hand(models.Model):
 class HandToItemPartImages(models.Model):
     hand = models.ForeignKey(Hand, on_delete=models.PROTECT)
     item_part = models.ForeignKey("manuscripts.ItemPart", on_delete=models.PROTECT)
+
+    class Meta:
+        verbose_name_plural = "Hands x Item Parts"
