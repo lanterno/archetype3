@@ -16,8 +16,124 @@ paths:
                 $ref: '#/components/schemas/Scribe'
       tags:
         - scribes
+  /api/v1/search/scribes/facets:
+    get:
+      operationId: search-scribes-facets
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  fields: 
+                    type: object
+                    properties:
+                      __facet_name__:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            text:
+                              type: string
+                            count:
+                              type: integer
+                            narrow_url:
+                              type: string
+                  dates:
+                    type: object
+                  queries:
+                    type: object
+                  objects:
+                    type: object
+                    properties:
+                      count:
+                        type: integer
+                      next:
+                        type: string
+                      previous:
+                        type: string
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/ScribeSearchResult'
+      tags:
+        - search
+  /api/v1/search/hands/facets:
+    get:
+      operationId: search-hands-facets
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  fields: 
+                    type: object
+                    properties:
+                      __facet_name__:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            text:
+                              type: string
+                            count:
+                              type: integer
+                            narrow_url:
+                              type: string
+                  dates:
+                    type: object
+                  queries:
+                    type: object
+                  objects:
+                    type: object
+                    properties:
+                      count:
+                        type: integer
+                      next:
+                        type: string
+                      previous:
+                        type: string
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/HandSearchResult'
+      tags:
+        - search
 components:
   schemas:
+    ScribeSearchResult:
+      type: object
+      properties:
+        name:
+          type: string
+        period:
+          type: string
+        scriptorium:
+          type: string
+    HandSearchResult:
+      type: object
+      properties:
+        name:
+          type: string
+        date:
+          type: string
+        place:
+          type: string
+        description:
+          type: string
+        repository_name:
+          type: string
+        repository_city:
+          type: string
+        shelfmark:
+          type: string
+        catalogue_numbers:
+          type: array
+          items:
+            type: string
     Scribe:
       type: object
       properties:
