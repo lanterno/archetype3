@@ -30,6 +30,12 @@ services:
       - .:/src
     depends_on:
       - postgres
-  
+  image_server:
+    image: daschswiss/sipi
+    ports:
+      - 1024:1024
+    volumes:
+      - ./media:/sipi/images
+
 volumes:
   postgres:
