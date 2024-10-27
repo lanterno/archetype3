@@ -16,6 +16,23 @@ paths:
                 $ref: '#/components/schemas/Scribe'
       tags:
         - scribes
+  /api/v1/hands/{id}/:
+    get:
+      operationId: hands-details
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Hand'
+      tags:
+        - scribes
   /api/v1/search/scribes/facets:
     get:
       operationId: search-scribes-facets
@@ -145,23 +162,22 @@ components:
           type: string
         scriptorium:
           type: string
-        script:
-          type: object
-          properties:
-            name:
-              type: string
         hands:
           type: array
           items:
-            type: object
-            properties:
-              name:
-                type: string
-              script:
-                type: object
-                properties:
-                  name:
-                    type: string
+            $ref: '#/components/schemas/Hand'
+    Hand:
+      type: object
+      properties:
+        name:
+          type: string
+        script_id:
+          type: string
+        manuscript_id:
+          type: integer
+        scribe_id:
+          type: integer
         
+    
 tags:
   - name: scribes
