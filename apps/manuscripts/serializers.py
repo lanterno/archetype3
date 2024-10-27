@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import HistoricalItemDescription, ItemPart, Repository, CatalogueNumber, CurrentItem, ImageText, ItemImage
+from .models import CatalogueNumber, CurrentItem, HistoricalItemDescription, ImageText, ItemImage, ItemPart, Repository
 
 
 class RepositorySerializer(serializers.ModelSerializer):

@@ -1,9 +1,9 @@
-from drf_haystack.serializers import HaystackSerializer, HaystackFacetSerializer
-from drf_haystack.viewsets import HaystackViewSet
 from drf_haystack.mixins import FacetMixin
+from drf_haystack.serializers import HaystackFacetSerializer, HaystackSerializer
+from drf_haystack.viewsets import HaystackViewSet
 
-from .search_indexes import ScribeIndex, HandIndex
 from .models import Scribe
+from .search_indexes import HandIndex, ScribeIndex
 
 
 class ScribeSearchSerializer(HaystackSerializer):

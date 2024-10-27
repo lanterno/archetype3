@@ -1,5 +1,6 @@
 from haystack import indexes
-from apps.scribes.models import Scribe, Hand
+
+from apps.scribes.models import Hand, Scribe
 
 
 class ScribeIndex(indexes.SearchIndex, indexes.Indexable):
