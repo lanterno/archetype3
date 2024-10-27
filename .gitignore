@@ -163,3 +163,4 @@ cython_debug/
 staticfiles
 uploads
 storage
+sipi
