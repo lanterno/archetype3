@@ -1,16 +1,18 @@
 from django.db import models
+from django.contrib.postgres.fields import ArrayField
 
 
 class Character(models.Model):
     class CharacterForm(models.TextChoices):
-        MAJUSCULE = "Majuscule"
-        MINUSCULE = "Minuscule"
-        NUMERAL = "Numeral"
-        PUNCTUATION = "Punctuation"
-        SYMBOL = "Symbol"
+        MAJUSCULE_LETTER = "majuscule_letter"
+        MINUSCULE_LETTER = "minuscule_letter"
+        NUMERAL = "numeral"
+        PUNCTUATION = "punctuation"
+        SYMBOL = "symbol"
+        ACCENT = "accent"
 
     name = models.CharField(max_length=10)
-    form = models.CharField(choices=CharacterForm.choices, max_length=11, null=True, blank=True)
+    type = models.CharField(choices=CharacterForm.choices, max_length=16, null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -19,6 +21,8 @@ class Character(models.Model):
 class Allograph(models.Model):
     character = models.ForeignKey(Character, on_delete=models.CASCADE)
     name = models.CharField(max_length=10)
+    aspects = models.ManyToManyField("Aspect", related_name="allographs")
+    components = models.ManyToManyField("Component", related_name="allographs", through="AllographComponent")
 
     def __str__(self):
         return self.name
@@ -26,15 +30,47 @@ class Allograph(models.Model):
 
 class Graph(models.Model):
     item_image = models.ForeignKey("manuscripts.ItemImage", related_name="graphs", on_delete=models.CASCADE)
-    location = models.JSONField()
+    annotation = models.JSONField()
     allograph = models.ForeignKey(Allograph, on_delete=models.CASCADE)
     components = models.ManyToManyField("Component")
+    hand = models.ForeignKey("scribes.Hand", on_delete=models.PROTECT)
 
 
 class Feature(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
+    def __str__(self):
+        return self.name
+
 
 class Component(models.Model):
     name = models.CharField(max_length=100, unique=True)
-    features = models.ManyToManyField(Feature)
+    features = models.ManyToManyField(Feature, related_name="components")
+
+    def __str__(self):
+        return self.name
+
+
+class AllographComponent(models.Model):
+    allograph = models.ForeignKey(Allograph, on_delete=models.CASCADE)
+    component = models.ForeignKey(Component, on_delete=models.CASCADE)
+    features = models.ManyToManyField(Feature, through="AllographComponentFeature")
+
+    class Meta:
+        unique_together = ("allograph", "component")
+
+
+class AllographComponentFeature(models.Model):
+    allograph_component = models.ForeignKey(AllographComponent, on_delete=models.CASCADE)
+    feature = models.ForeignKey(Feature, on_delete=models.CASCADE)
+    set_by_default = models.BooleanField(default=False)
+
+    class Meta:
+        unique_together = ("allograph_component", "feature")
+
+
+class Aspect(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.name
