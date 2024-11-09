@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Allograph, Character, Component, Feature, Graph, Aspect, AllographComponent
+from .models import Allograph, AllographComponent, Aspect, Character, Component, Feature, Graph
 
 
 @admin.register(Character)

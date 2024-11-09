@@ -35,7 +35,7 @@ services:
     ports:
       - 1024:1024
     volumes:
-      - ./sipi:/sipi/images
+      - ./storage/media:/sipi/images
 
 volumes:
   postgres:

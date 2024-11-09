@@ -200,3 +200,7 @@ HAYSTACK_CONNECTIONS = {
 #         "ENGINE": "haystack.backends.simple_backend.SimpleEngine",
 #     },
 # }
+
+IIIF_HOST = "http://localhost:1024/"
+
+IIIF_PROFILES = {"thumbnail": {"host": IIIF_HOST, "region": "full", "size": "150,", "rotation": "0", "quality": "default", "format": "jpg"}}

@@ -1,4 +1,5 @@
 from django.db import models
+from djiiif import IIIFField
 
 
 class ItemFormat(models.Model):
@@ -97,7 +98,7 @@ class CatalogueNumber(models.Model):
 
 class ItemImage(models.Model):
     item_part = models.ForeignKey(ItemPart, related_name="images", on_delete=models.CASCADE)
-    image = models.ImageField(upload_to="historical_items")
+    image = IIIFField(upload_to="historical_items")
     locus = models.CharField(max_length=20, null=True)
     folio_side = models.CharField(max_length=20, null=True)
     folio_number = models.CharField(max_length=20, null=True)
