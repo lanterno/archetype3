@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     "haystack",
     "drf_haystack",
     "admin_ordering",
+    "nested_admin",
     # project apps
     "apps.common",
     "apps.users",

@@ -45,6 +45,7 @@ django-haystack = {extras = ["elasticsearch"], version = "^3.3.0"}
 drf-haystack = {git = "https://github.com/rhblind/drf-haystack"}
 djiiif = "^0.22"
 django-admin-ordering = "^0.19.0"
+django-nested-admin = "^4.1.1"
 
 [tool.poetry.group.dev.dependencies]
 ipython = "^8.26.0"

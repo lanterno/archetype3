@@ -438,6 +438,23 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-admin-ordering"
+version = "0.19.0"
+description = "Orderable change lists and inlines done right^Wsimple"
+optional = false
+python-versions = ">=3.10"
+files = [
+    {file = "django_admin_ordering-0.19.0-py3-none-any.whl", hash = "sha256:6cbe42a166523954a535127c01537f32ce7ca2adc97e1c78a6e8d44768a0384b"},
+    {file = "django_admin_ordering-0.19.0.tar.gz", hash = "sha256:aea37659958c104e632025f60cefc66750bc6dca6a39a9ede0be18af2039653d"},
+]
+
+[package.dependencies]
+django-js-asset = ">=2"
+
+[package.extras]
+tests = ["coverage"]
+
+[[package]]
 name = "django-cors-headers"
 version = "4.5.0"
 description = "django-cors-headers is a Django application for handling the server headers required for Cross-Origin Resource Sharing (CORS)."
@@ -516,6 +533,41 @@ elasticsearch = ["elasticsearch (>=5,<8)"]
 testing = ["coverage", "geopy (==2)", "pysolr (>=3.7)", "python-dateutil", "requests", "whoosh (>=2.5.4,<3.0)"]
 
 [[package]]
+name = "django-js-asset"
+version = "2.2.0"
+description = "script tag with additional attributes for django.forms.Media"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "django_js_asset-2.2.0-py3-none-any.whl", hash = "sha256:7ef3e858e13d06f10799b56eea62b1e76706f42cf4e709be4e13356bc0ae30d8"},
+    {file = "django_js_asset-2.2.0.tar.gz", hash = "sha256:0c57a82cae2317e83951d956110ce847f58ff0cdc24e314dbc18b35033917e94"},
+]
+
+[package.dependencies]
+django = ">=3.2"
+
+[package.extras]
+tests = ["coverage"]
+
+[[package]]
+name = "django-nested-admin"
+version = "4.1.1"
+description = "Django admin classes that allow for nested inlines"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "django-nested-admin-4.1.1.tar.gz", hash = "sha256:645d63b38d579b034a65e0983f1f8cbb8824c75b4232f8d62a1583fa7a9f568f"},
+    {file = "django_nested_admin-4.1.1-py3-none-any.whl", hash = "sha256:7e72ab7a8ae4c91074f6f709ce38fdf54f9c5f78d19e68772e0f05b83090ec9f"},
+]
+
+[package.dependencies]
+python-monkey-business = ">=1.0.0"
+
+[package.extras]
+dev = ["Pillow", "black", "dj-database-url", "django-selenosis", "flake8", "pytest", "pytest-cov", "pytest-django", "pytest-xdist", "selenium"]
+test = ["Pillow", "dj-database-url", "django-selenosis", "pytest", "pytest-cov", "pytest-django", "pytest-xdist", "selenium"]
+
+[[package]]
 name = "django-taggit"
 version = "6.1.0"
 description = "django-taggit is a reusable Django application for simple tagging."
@@ -591,6 +643,19 @@ doc = ["Sphinx (>=1.6.5,<2)", "sphinx_rtd_theme (>=0.1.9)"]
 lint = ["flake8", "isort", "pep8"]
 python-jose = ["python-jose (==3.3.0)"]
 test = ["cryptography", "freezegun", "pytest", "pytest-cov", "pytest-django", "pytest-xdist", "tox"]
+
+[[package]]
+name = "djiiif"
+version = "0.22"
+description = "Simple IIIF integration for Django."
+optional = false
+python-versions = "*"
+files = [
+    {file = "djiiif-0.22.tar.gz", hash = "sha256:0ddd18905f829723c50272671f0b4b93f2730f4f2422e8061fe98818ca3c24cc"},
+]
+
+[package.dependencies]
+Django = "*"
 
 [[package]]
 name = "djoser"
@@ -1317,6 +1382,17 @@ files = [
 six = ">=1.5"
 
 [[package]]
+name = "python-monkey-business"
+version = "1.1.0"
+description = "Utility functions for monkey-patching python code"
+optional = false
+python-versions = "*"
+files = [
+    {file = "python-monkey-business-1.1.0.tar.gz", hash = "sha256:8393839cc741415ed5ddc2bd58e2d4ce07f966a7d26b7aebff19dcec64818edc"},
+    {file = "python_monkey_business-1.1.0-py2.py3-none-any.whl", hash = "sha256:15b4f603c749ba9a7b4f1acd36af023a6c5ba0f7e591c945f8253f0ef44bf389"},
+]
+
+[[package]]
 name = "python3-openid"
 version = "3.2.0"
 description = "OpenID support for modern servers and consumers."
@@ -1614,4 +1690,4 @@ brotli = ["brotli"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "5b5b0d644c8693f9d7bc9d77ddfae463a7ee5010c81269268371927a6694672e"
+content-hash = "692c445658aab517e11627e8c789b49b3c6325fe1f018c986c881007c616cc20"
