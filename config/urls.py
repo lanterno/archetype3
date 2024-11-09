@@ -19,7 +19,7 @@ urlpatterns = (
         path("api/v1/auth/", include("apps.users.urls")),
         path("api/v1/media/", include("apps.publications.urls")),
         path("api/v1/manuscripts/", include("apps.manuscripts.urls")),
-        path("api/v1/scribes/", include("apps.scribes.urls")),
+        path("api/v1/", include("apps.scribes.urls")),
         path("api/v1/handwriting/", include("apps.handwriting.urls")),
         path("admin/", admin.site.urls),
         path("api/v1/schema/", APISchemaView.as_view(), name="doc-schema"),
