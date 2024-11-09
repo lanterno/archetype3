@@ -19,7 +19,7 @@ class ItemPartIndex(indexes.ModelSearchIndex, indexes.Indexable):
         return obj.images.count()
 
     def prepare_catalogue_numbers(self, obj):
-        return [str(cn) for cn in obj.historical_item.catalogue_numbers.all()]
+        return obj.historical_item.get_catalogue_numbers_display()
 
     class Meta:
         model = ItemPart

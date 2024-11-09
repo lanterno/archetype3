@@ -56,17 +56,21 @@ class HistoricalItem(models.Model):
 
     type = models.CharField(max_length=20, choices=Type.choices)
     format = models.ForeignKey(ItemFormat, null=True, on_delete=models.SET_NULL)
-    language = models.CharField(max_length=100)
+    language = models.CharField(max_length=100, null=True, blank=True)
 
     vernacular = models.BooleanField(null=True)
     neumed = models.BooleanField(null=True)
-    hair_type = models.CharField(max_length=20, choices=HairType.choices, null=True)
+    hair_type = models.CharField(max_length=20, choices=HairType.choices, null=True, blank=True)
 
     date = models.CharField(max_length=100)
-    date_sort = models.CharField(max_length=100)
 
-    issuer = models.CharField(max_length=100)
-    named_beneficiary = models.CharField(max_length=100)
+    issuer = models.CharField(max_length=100, blank=True)
+    named_beneficiary = models.CharField(max_length=100, blank=True)
+
+    def get_catalogue_numbers_display(self):
+        return [str(cn) for cn in self.catalogue_numbers.all()]
+
+    get_catalogue_numbers_display.short_description = "Catalogue Numbers"  # for django admin
 
     def __str__(self):
         return f"{self.get_type_display()} - {self.id}"
@@ -100,8 +104,6 @@ class ItemImage(models.Model):
     item_part = models.ForeignKey(ItemPart, related_name="images", on_delete=models.CASCADE)
     image = IIIFField(upload_to="historical_items")
     locus = models.CharField(max_length=20, null=True)
-    folio_side = models.CharField(max_length=20, null=True)
-    folio_number = models.CharField(max_length=20, null=True)
 
     def number_of_annotations(self):
         return self.graphs.count()
