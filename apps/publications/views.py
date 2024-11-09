@@ -2,8 +2,14 @@ from django_filters import rest_framework as filters
 from rest_framework.mixins import ListModelMixin, RetrieveModelMixin
 from rest_framework.viewsets import GenericViewSet
 
-from .models import Event, Publication
-from .serializers import EventDetailSerializer, EventListSerializer, PublicationDetailSerializer, PublicationListSerializer
+from .models import CarouselItem, Event, Publication
+from .serializers import (
+    CarouselItemSerializer,
+    EventDetailSerializer,
+    EventListSerializer,
+    PublicationDetailSerializer,
+    PublicationListSerializer,
+)
 
 
 class EventViewSet(GenericViewSet, ListModelMixin, RetrieveModelMixin):
@@ -30,3 +36,9 @@ class PublicationViewSet(GenericViewSet, ListModelMixin, RetrieveModelMixin):
 
     def get_queryset(self):
         return Publication.objects.filter(status=Publication.Status.PUBLISHED)
+
+
+class CarouselItemViewSet(GenericViewSet, ListModelMixin):
+    queryset = CarouselItem.objects.all()
+    serializer_class = CarouselItemSerializer
+    pagination_class = None

@@ -1,10 +1,27 @@
 paths:
+  /api/v1/media/carousel-items/:
+    get:
+      operationId: carousel-items-list
+      responses:
+        200:
+          description: List of carousel items
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  carousel_items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/carouselItem'
+      tags:
+        - Media
   /api/v1/media/events/:
     get:
       operationId: events-list
       responses:
         200:
-          description: No response body
+          description: List of events
           content:
             application/json:
               schema:
@@ -15,7 +32,7 @@ paths:
                     items:
                       $ref: '#/components/schemas/eventListItem'
       tags:
-        - events
+        - Media
   /api/v1/media/events/{id}/:
     get:
       operationId: events-detail
@@ -32,7 +49,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/eventDetailItem'
       tags:
-        - events
+        - Media
   /api/v1/media/publications/:
     get:
       operationId: publications-list
@@ -65,7 +82,7 @@ paths:
                     items:
                       $ref: '#/components/schemas/publicationListItem'
       tags:
-        - publications
+        - Media
   /api/v1/media/publications/{id}/:
     get:
       operationId: publications-detail
@@ -82,9 +99,18 @@ paths:
               schema:
                 $ref: '#/components/schemas/publicationDetailItem'
       tags:
-        - publications
+        - Media
 components:
   schemas:
+    carouselItem:
+      type: object
+      properties:
+        title:
+          type: string
+        image:
+          type: string
+        link:
+          type: string
     eventListItem:
       type: object
       properties:

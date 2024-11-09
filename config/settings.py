@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     "django_filters",
     "haystack",
     "drf_haystack",
+    "admin_ordering",
     # project apps
     "apps.common",
     "apps.users",

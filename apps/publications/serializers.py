@@ -2,7 +2,13 @@ from rest_framework import serializers
 
 from apps.users.models import User
 
-from .models import Comment, Event, Publication
+from .models import CarouselItem, Comment, Event, Publication
+
+
+class CarouselItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CarouselItem
+        fields = ["title", "url", "image"]
 
 
 class EventListSerializer(serializers.ModelSerializer):

@@ -1,6 +1,14 @@
+from admin_ordering.admin import OrderableAdmin
 from django.contrib import admin
 
-from .models import Comment, Event, Publication
+from .models import CarouselItem, Comment, Event, Publication
+
+
+@admin.register(CarouselItem)
+class CarouselItemAdmin(OrderableAdmin, admin.ModelAdmin):
+    list_display = ["title", "ordering"]
+    fields = ["title", "url", "image"]
+    list_editable = ["ordering"]
 
 
 class EventAdmin(admin.ModelAdmin):
