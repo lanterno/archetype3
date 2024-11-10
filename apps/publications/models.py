@@ -1,6 +1,6 @@
+import tagulous.models
 from admin_ordering.models import OrderableModel
 from django.db import models
-from taggit.managers import TaggableManager
 from tinymce.models import HTMLField
 
 
@@ -45,11 +45,12 @@ class Publication(models.Model):
         default=Status.DRAFT,
         help_text="With Draft chosen, will only be shown for admin users on the site.",
     )
-    keywords = TaggableManager(verbose_name="Keywords", blank=True)
+    keywords = tagulous.models.TagField(force_lowercase=True, max_count=10, blank=True)
     is_blog_post = models.BooleanField(default=False)
     is_news = models.BooleanField(default=False)
     is_featured = models.BooleanField(default=False)
     allow_comments = models.BooleanField(default=True)
+    similar_posts = models.ManyToManyField("self", blank=True)
     published_at = models.DateTimeField(blank=True, null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)

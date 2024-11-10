@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     "djoser",
     "django_extensions",
     "tinymce",
-    "taggit",
+    "tagulous",
     "django_filters",
     "haystack",
     "drf_haystack",

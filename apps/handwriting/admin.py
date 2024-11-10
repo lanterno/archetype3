@@ -35,6 +35,14 @@ class AllographAdmin(nested_admin.NestedModelAdmin):
 
 
 admin.site.register(Graph)
+
+
+@admin.register(Component)
+class ComponentAdmin(admin.ModelAdmin):
+    list_display = ["name"]
+    fields = ["name", "features"]
+    filter_horizontal = ["features"]
+
+
 admin.site.register(Feature)
-admin.site.register(Component)
 admin.site.register(Aspect)

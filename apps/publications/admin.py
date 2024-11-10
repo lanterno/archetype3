@@ -1,3 +1,4 @@
+import tagulous.admin
 from admin_ordering.admin import OrderableAdmin
 from django.contrib import admin
 
@@ -11,6 +12,7 @@ class CarouselItemAdmin(OrderableAdmin, admin.ModelAdmin):
     list_editable = ["ordering"]
 
 
+@admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
     list_display = ("title", "created_at")
     search_fields = ["title"]
@@ -20,17 +22,18 @@ class EventAdmin(admin.ModelAdmin):
 
 
 class PublicationAdmin(admin.ModelAdmin):
-    list_display = ("title", "author", "status", "created_at")
+    list_display = ("title", "author", "status", "keywords", "created_at")
     list_filter = ("status", "is_blog_post", "is_news", "is_featured", "allow_comments")
     search_fields = ("title", "content")
     prepopulated_fields = {"slug": ("title",)}
-
+    filter_horizontal = ("similar_posts",)
     fieldsets = (
         ("Publication Details", {"fields": ("title", "slug", "content", "preview", "author")}),
         (
             "Publication Options",
-            {"fields": ("status", "published_at", "is_blog_post", "is_news", "is_featured", "allow_comments", "keywords")},
+            {"fields": ("status", "published_at", "is_blog_post", "is_news", "is_featured", "allow_comments")},
         ),
+        ("SEO", {"fields": ("similar_posts", "keywords")}),
     )
 
     readonly_fields = ("created_at", "updated_at")
@@ -43,12 +46,11 @@ class PublicationAdmin(admin.ModelAdmin):
         return form
 
 
+tagulous.admin.register(Publication, PublicationAdmin)
+
+
+@admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
     list_display = ("id", "author_name", "author_email", "is_approved", "created_at")
     search_fields = ["author_name", "author_email", "content"]
     list_filter = ["created_at", "is_approved"]
-
-
-admin.site.register(Event, EventAdmin)
-admin.site.register(Publication, PublicationAdmin)
-admin.site.register(Comment, CommentAdmin)
