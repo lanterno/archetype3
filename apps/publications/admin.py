@@ -16,7 +16,6 @@ class EventAdmin(admin.ModelAdmin):
     search_fields = ["title"]
     prepopulated_fields = {"slug": ("title",)}
 
-    # Read-only fields
     readonly_fields = ("created_at", "updated_at")
 
 
@@ -34,7 +33,6 @@ class PublicationAdmin(admin.ModelAdmin):
         ),
     )
 
-    # Read-only fields
     readonly_fields = ("created_at", "updated_at")
 
     def get_form(self, request, obj=None, **kwargs):

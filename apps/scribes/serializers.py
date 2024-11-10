@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Scribe, Hand
+from .models import Hand, Scribe
 
 
 class ScribeSerializer(serializers.ModelSerializer):
@@ -12,7 +12,7 @@ class ScribeSerializer(serializers.ModelSerializer):
 
 class HandSerializer(serializers.ModelSerializer):
     scriptorium = serializers.StringRelatedField()
-    
+
     class Meta:
         model = Hand
         fields = ["id", "name", "scribe", "item_part", "date", "place", "description", "scriptorium"]

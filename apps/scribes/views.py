@@ -1,9 +1,9 @@
-from rest_framework.mixins import RetrieveModelMixin, ListModelMixin
-from rest_framework.viewsets import GenericViewSet
 from django_filters import rest_framework as filters
+from rest_framework.mixins import ListModelMixin, RetrieveModelMixin
+from rest_framework.viewsets import GenericViewSet
 
-from .models import Scribe, Hand
-from .serializers import ScribeSerializer, HandSerializer
+from .models import Hand, Scribe
+from .serializers import HandSerializer, ScribeSerializer
 
 
 class ScribeViewSet(GenericViewSet, RetrieveModelMixin):
