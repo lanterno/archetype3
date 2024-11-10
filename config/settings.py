@@ -39,6 +39,8 @@ CSRF_TRUSTED_ORIGINS = ["https://archetype3.onrender.com", "http://localhost:800
 
 INSTALLED_APPS = [
     "django.contrib.contenttypes",
+    "admin_interface",
+    "colorfield",
     "config.apps.MyAdminConfig",
     "django.contrib.auth",
     "django.contrib.sessions",
