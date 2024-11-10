@@ -14,10 +14,17 @@ from .models import (
 )
 
 
+class HistoricalItemDescriptionInline(admin.TabularInline):
+    model = HistoricalItemDescription
+    extra = 1
+    fields = ["source", "content"]
+
+
 @admin.register(HistoricalItem)
 class HistoricalItemAdmin(admin.ModelAdmin):
     list_display = ["id", "get_catalogue_numbers_display", "date", "issuer", "named_beneficiary"]
     search_fields = ["date", "issuer", "named_beneficiary"]
+    inlines = [HistoricalItemDescriptionInline]
 
 
 @admin.register(CurrentItem)
@@ -53,6 +60,5 @@ class ItemImageAdmin(admin.ModelAdmin):
 
 
 admin.site.register(ItemFormat)
-admin.site.register(HistoricalItemDescription)
 admin.site.register(CatalogueNumber)
 admin.site.register(ImageText)
