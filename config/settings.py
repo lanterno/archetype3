@@ -38,9 +38,9 @@ CORS_ALLOWED_ORIGINS = ["https://archetype3.onrender.com", "http://localhost:300
 CSRF_TRUSTED_ORIGINS = ["https://archetype3.onrender.com", "http://localhost:8000"]
 
 INSTALLED_APPS = [
-    "django.contrib.admin",
-    "django.contrib.auth",
     "django.contrib.contenttypes",
+    "config.apps.MyAdminConfig",
+    "django.contrib.auth",
     "django.contrib.sessions",
     "django.contrib.messages",
     # 3rd-party apps
