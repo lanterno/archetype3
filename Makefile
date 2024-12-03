@@ -2,6 +2,8 @@ build:
 	docker compose build
 up:
 	docker compose up
+up-bg:  # bg stands for background
+	docker compose up -d
 makemigrations:
 	docker compose run --rm api python manage.py makemigrations
 migrate:

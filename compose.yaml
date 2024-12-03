@@ -11,6 +11,7 @@ services:
     image: postgres:alpine
     volumes:
       - postgres:/var/lib/postgresql/data
+    # Production: hide these env vars on production by using a .env file
     environment:
       - POSTGRES_HOST=localhost
       - POSTGRES_PORT=5432
@@ -19,13 +20,17 @@ services:
       - POSTGRES_PASSWORD=password
   api:
     image: ghcr.io/lanterno/archetype:latest
+    # Production: remove the following line
     build: .
     environment:
       DJANGO_SETTINGS_MODULE: config.settings
     command: python manage.py runserver 0.0.0.0:80 --nostatic
+    # Production: change config/.env to the location of your .env file
     env_file: ${API_ENV_FILE:-config/.env}
+    # production: You might want to change the port to 80 if you don't have a reverse proxy.
     ports:
       - "8000:80"
+    # Production: remove the volumes section
     volumes:
       - .:/src
     depends_on:
