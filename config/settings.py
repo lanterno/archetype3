@@ -152,8 +152,6 @@ REST_FRAMEWORK = {
     "PAGE_SIZE": 20,
 }
 
-AUTH_USER_MODEL = "users.User"
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 STATIC_URL = "static/"

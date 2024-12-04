@@ -10,7 +10,7 @@ paths:
             schema:
               type: object
               properties:
-                email:
+                username:
                   type: string
                 password:
                   type: string
@@ -66,6 +66,8 @@ components:
       type: object
       properties:
         id: 
+          type: string
+        username:
           type: string
         email:
           type: string

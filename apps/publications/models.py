@@ -1,7 +1,10 @@
 import tagulous.models
 from admin_ordering.models import OrderableModel
+from django.contrib.auth import get_user_model
 from django.db import models
 from tinymce.models import HTMLField
+
+User = get_user_model()
 
 
 class CarouselItem(OrderableModel):
@@ -37,7 +40,7 @@ class Publication(models.Model):
     content = HTMLField()
     preview = HTMLField()
 
-    author = models.ForeignKey("users.User", on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
 
     status = models.CharField(
         max_length=10,
