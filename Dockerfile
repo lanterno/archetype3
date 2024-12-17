@@ -1,11 +1,11 @@
 # syntax = docker/dockerfile:latest
 
-FROM python:3.12-slim as python
+FROM python:3.12-slim AS python
 ENV PYTHONUNBUFFERED=true
 LABEL org.opencontainers.image.source="https://github.com/lanterno/archetype3"
 LABEL authors="ahmed.elghareeb@proton.com"
 
-FROM python as deps_builder
+FROM python AS deps_builder
 
 WORKDIR /deps
 ENV POETRY_VIRTUALENVS_IN_PROJECT=true
@@ -19,7 +19,7 @@ COPY poetry.lock ./
 RUN poetry config installer.max-workers 10
 RUN poetry install --no-interaction --no-ansi -vvv
 
-FROM python as runtime
+FROM python AS runtime
 COPY --from=deps_builder /deps/.venv /deps/.venv
 
 WORKDIR /src
