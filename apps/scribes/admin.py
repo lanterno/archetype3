@@ -8,7 +8,11 @@ class ScribeAdmin(admin.ModelAdmin):
     search_fields = ["name", "period", "scriptorium"]
 
 
+class HandAdmin(admin.ModelAdmin):
+    list_display = ["id", "item_part", "name", "scribe", "script", "date", "place"]
+
+
 admin.site.register(Scribe, ScribeAdmin)
 admin.site.register(Script)
-admin.site.register(Hand)
+admin.site.register(Hand, HandAdmin)
 admin.site.register(HandToItemPartImages)

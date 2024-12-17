@@ -21,8 +21,8 @@ class Character(models.Model):
 class Allograph(models.Model):
     character = models.ForeignKey(Character, on_delete=models.CASCADE)
     name = models.CharField(max_length=10)
-    aspects = models.ManyToManyField("Aspect", related_name="allographs")
-    components = models.ManyToManyField("Component", related_name="allographs", through="AllographComponent")
+    aspects = models.ManyToManyField("Aspect", related_name="allographs", blank=True)
+    components = models.ManyToManyField("Component", related_name="allographs", through="AllographComponent", blank=True)
 
     def __str__(self):
         return self.name
@@ -34,6 +34,10 @@ class Graph(models.Model):
     allograph = models.ForeignKey(Allograph, on_delete=models.CASCADE)
     components = models.ManyToManyField("Component", related_name="graphs", through="GraphComponent", blank=True)
     hand = models.ForeignKey("scribes.Hand", on_delete=models.PROTECT)
+
+    def __str__(self) -> str:
+        return f"#{self.id} - {self.allograph} - {self.item_image}"
+
 
 class GraphComponent(models.Model):
     graph = models.ForeignKey("Graph", on_delete=models.CASCADE)
@@ -53,7 +57,7 @@ class Feature(models.Model):
 
 class Component(models.Model):
     name = models.CharField(max_length=100, unique=True)
-    features = models.ManyToManyField(Feature, related_name="components")
+    features = models.ManyToManyField(Feature, related_name="components", blank=True)
 
     def __str__(self):
         return self.name
