@@ -9,13 +9,13 @@ class CharacterAdmin(admin.ModelAdmin):
     list_display = ("name", "type")
 
 
-class AllographComponentFeatureInline(nested_admin.NestedStackedInline):
+class AllographComponentFeatureInline(nested_admin.nested.NestedStackedInline):
     model = AllographComponent.features.through
     extra = 1
     fields = ["allograph_component", "feature", "set_by_default"]
 
 
-class AllographComponentInline(nested_admin.NestedTabularInline):
+class AllographComponentInline(nested_admin.nested.NestedTabularInline):
     model = AllographComponent
     inlines = [AllographComponentFeatureInline]
     extra = 1
@@ -23,7 +23,7 @@ class AllographComponentInline(nested_admin.NestedTabularInline):
 
 
 @admin.register(Allograph)
-class AllographAdmin(nested_admin.NestedModelAdmin):
+class AllographAdmin(nested_admin.nested.NestedModelAdmin):
     list_display = ["name", "character"]
     filter_horizontal = ["aspects"]
     inlines = [AllographComponentInline]
