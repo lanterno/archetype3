@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "admin_interface",
     "colorfield",
-    "config.apps.MyAdminConfig",
+    "config.apps.ArcheTypeAdminConfig",
     "django.contrib.auth",
     "django.contrib.sessions",
     "django.contrib.messages",
