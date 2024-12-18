@@ -11,7 +11,7 @@ class APISchemaView(APIView):
         supporting_files = [
             settings.BASE_DIR / "apps/users/schema.yaml",
             settings.BASE_DIR / "apps/publications/schema.yaml",
-            settings.BASE_DIR / "apps/handwriting/schema.yaml",
+            settings.BASE_DIR / "apps/symbols_structure/schema.yaml",
             settings.BASE_DIR / "apps/manuscripts/schema.yaml",
             settings.BASE_DIR / "apps/scribes/schema.yaml",
         ]

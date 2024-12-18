@@ -3,7 +3,7 @@ from django.contrib import admin
 
 class ArcheTypeAdmin(admin.AdminSite):
     site_title = "Archetype administration"
-    site_header = "ArcheType - Models Of Authority"
+    site_header = "Models Of Authority - ArcheType"
     index_title = "Welcome to Archetype administration"
 
     def get_app_list(self, request, app_label=None):
@@ -13,7 +13,15 @@ class ArcheTypeAdmin(admin.AdminSite):
         """
         app_dict = self._build_app_dict(request, app_label)
 
-        desired_order = {"publications": 1, "manuscripts": 2, "scribes": 3, "handwriting": 4, "users": 5, "admin interface": 6}
+        desired_order = {
+            "publications": 1,
+            "manuscripts": 2,
+            "scribes": 3,
+            "symbols_structure": 4,
+            "annotations": 5,
+            "users": 6,
+            "admin interface": 7,
+        }
 
         app_list = sorted(app_dict.values(), key=lambda x: desired_order.get(x["name"].lower(), 99))
         return app_list

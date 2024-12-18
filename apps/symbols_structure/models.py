@@ -1,4 +1,3 @@
-from django.contrib.postgres.fields import ArrayField
 from django.db import models
 
 
@@ -26,26 +25,6 @@ class Allograph(models.Model):
 
     def __str__(self):
         return self.name
-
-
-class Graph(models.Model):
-    item_image = models.ForeignKey("manuscripts.ItemImage", related_name="graphs", on_delete=models.CASCADE)
-    annotation = models.JSONField()
-    allograph = models.ForeignKey(Allograph, on_delete=models.CASCADE)
-    components = models.ManyToManyField("Component", related_name="graphs", through="GraphComponent", blank=True)
-    hand = models.ForeignKey("scribes.Hand", on_delete=models.PROTECT)
-
-    def __str__(self) -> str:
-        return f"#{self.id} - {self.allograph} - {self.item_image}"
-
-
-class GraphComponent(models.Model):
-    graph = models.ForeignKey("Graph", on_delete=models.CASCADE)
-    component = models.ForeignKey("Component", on_delete=models.CASCADE)
-    features = models.ManyToManyField("Feature", blank=True)
-
-    class Meta:
-        unique_together = ("graph", "component")
 
 
 class Feature(models.Model):

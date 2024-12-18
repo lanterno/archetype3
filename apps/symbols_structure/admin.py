@@ -1,7 +1,7 @@
 import nested_admin
 from django.contrib import admin
 
-from .models import Allograph, AllographComponent, Aspect, Character, Component, Feature, Graph
+from apps.symbols_structure.models import Allograph, AllographComponent, Aspect, Character, Component, Feature
 
 
 @admin.register(Character)
@@ -32,19 +32,6 @@ class AllographAdmin(nested_admin.nested.NestedModelAdmin):
         (None, {"fields": ("name", "character")}),
         ("Aspects", {"fields": ("aspects",)}),
     )
-
-
-class GraphComponentInline(admin.TabularInline):
-    model = Graph.components.through
-    extra = 1
-    fields = ["component", "features"]
-    filter_horizontal = ["features"]
-
-
-@admin.register(Graph)
-class GraphAdmin(admin.ModelAdmin):
-    list_display = ["id", "hand", "allograph"]
-    inlines = [GraphComponentInline]
 
 
 @admin.register(Component)

@@ -67,7 +67,8 @@ INSTALLED_APPS = [
     "apps.users",
     "apps.publications",
     "apps.scribes",
-    "apps.handwriting",
+    "apps.symbols_structure",
+    "apps.annotations",
     "apps.manuscripts",
 ]
 
