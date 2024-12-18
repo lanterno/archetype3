@@ -42,8 +42,8 @@ CSRF_TRUSTED_ORIGINS = env("CSRF_TRUSTED_ORIGINS")
 
 INSTALLED_APPS = [
     "django.contrib.contenttypes",
-    "admin_interface",
-    "colorfield",
+    # "admin_interface",
+    # "colorfield",
     "config.apps.ArcheTypeAdminConfig",
     "django.contrib.auth",
     "django.contrib.sessions",
