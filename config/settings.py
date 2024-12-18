@@ -18,6 +18,9 @@ env = environ.Env(
     # set (casting, default value)
     DEBUG=(bool, False),
     SECRET_KEY=(str, "django-insecure"),
+    ALLOWED_HOSTS=(list, ["localhost"]),
+    CORS_ALLOWED_ORIGINS=(list, ["http://localhost:3000", "http://localhost:8000"]),
+    CSRF_TRUSTED_ORIGINS=(list, ["http://localhost:3000", "http://localhost:8000"]),
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -33,9 +36,9 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG")
 
-ALLOWED_HOSTS = ["archetype3.onrender.com", "localhost"]
-CORS_ALLOWED_ORIGINS = ["https://archetype3.onrender.com", "http://localhost:3000", "http://localhost:8000"]
-CSRF_TRUSTED_ORIGINS = ["https://archetype3.onrender.com", "http://localhost:8000"]
+ALLOWED_HOSTS = env("ALLOWED_HOSTS")
+CORS_ALLOWED_ORIGINS = env("CORS_ALLOWED_ORIGINS")
+CSRF_TRUSTED_ORIGINS = env("CSRF_TRUSTED_ORIGINS")
 
 INSTALLED_APPS = [
     "django.contrib.contenttypes",

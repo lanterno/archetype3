@@ -19,20 +19,25 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
   api:
-    image: ghcr.io/lanterno/archetype:latest
+    image: ghcr.io/lanterno/archetype3:latest
     # Production: remove the following line
     build: .
     environment:
       DJANGO_SETTINGS_MODULE: config.settings
+    # Production: remove the following line
     command: python manage.py runserver 0.0.0.0:80 --nostatic
-    # Production: change config/.env to the location of your .env file
+    # Production: change `config/.env` to the location of your .env file
+    # Note: don't just use `.env` as it has special meaning in docker-compose
     env_file: ${API_ENV_FILE:-config/.env}
-    # production: You might want to change the port to 80 if you don't have a reverse proxy.
+    # production: You might want to change the destination port to 80 if you don't have a reverse proxy.
     ports:
       - "8000:80"
-    # Production: remove the volumes section
     volumes:
+      # Production: remove the following line
       - .:/src
+      # Production: uncomment the following line
+      # don't forget to create an empty storage folder in the root of your project
+      # - ./storage:/src/storage
     depends_on:
       - postgres
   image_server:
