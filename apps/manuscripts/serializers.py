@@ -49,7 +49,6 @@ class HistoricalItemSerializer(serializers.ModelSerializer):
             # "vernacular",
             # "neumed",
             # "hair_type",
-            # "date_sort",
             # "issuer",
             # "named_beneficiary",
         ]
@@ -73,7 +72,6 @@ class ItemPartListSerializer(serializers.ModelSerializer):
     neumed = serializers.BooleanField(source="historical_item.neumed")
     hair_type = serializers.CharField(source="historical_item.hair_type")
     date = serializers.CharField(source="historical_item.date")
-    date_sort = serializers.CharField(source="historical_item.date_sort")
     issuer = serializers.CharField(source="historical_item.issuer")
     named_beneficiary = serializers.CharField(source="historical_item.named_beneficiary")
 
@@ -92,7 +90,6 @@ class ItemPartListSerializer(serializers.ModelSerializer):
             "neumed",
             "hair_type",
             "date",
-            "date_sort",
             "issuer",
             "named_beneficiary",
             "repository_id",
