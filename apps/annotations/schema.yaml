@@ -1,0 +1,67 @@
+paths:
+  /api/v1/manuscripts/graphs/:
+    get:
+      operationId: graphs-list
+      parameters:
+        - in: query
+          name: image_id
+          schema:
+            type: integer
+          required: false
+        - in: query
+          name: allograph_id
+          schema:
+            type: integer
+          required: false
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Graph'
+      tags:
+        - annotations
+    post:
+      operationId: graphs-create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Graph'
+      responses:
+        201:
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  schemas:
+    Graph:
+      type: object
+      properties:
+        id:
+          type: integer
+        image_id:
+          type: integer
+        annotation:
+          type: object
+        allograph_id:
+          type: integer
+        hand_id:
+          type: integer
+        components:
+          type: array
+          items:
+            type: object
+            properties:
+              component_id:
+                type: integer
+              features:
+                type: array
+                items:
+                  type: integer
+  
+tags:
+  - name: Annotations
