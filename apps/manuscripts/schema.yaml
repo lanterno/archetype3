@@ -192,8 +192,6 @@ components:
           type: string
         date:
           type: string
-        date_sort:
-          type: string
         issuer:
           type: string
         named_beneficiary:
