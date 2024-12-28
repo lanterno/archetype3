@@ -4,12 +4,12 @@ paths:
       operationId: graphs-list
       parameters:
         - in: query
-          name: image_id
+          name: item_image
           schema:
             type: integer
           required: false
         - in: query
-          name: allograph_id
+          name: allograph
           schema:
             type: integer
           required: false
@@ -43,20 +43,20 @@ components:
       properties:
         id:
           type: integer
-        image_id:
+        item_image:
           type: integer
         annotation:
           type: object
-        allograph_id:
+        allograph:
           type: integer
-        hand_id:
+        hand:
           type: integer
         components:
           type: array
           items:
             type: object
             properties:
-              component_id:
+              component:
                 type: integer
               features:
                 type: array

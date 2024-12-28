@@ -53,6 +53,7 @@ ipython = "^8.26"
 black = "^24.8"
 pylint-django = "^2.5"
 pylint = "^3.2"
+factory-boy = "^3.3"
 
 [tool.pytest.ini_options]
 log_cli = 0
