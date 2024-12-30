@@ -10,16 +10,15 @@ class GraphComponentSerializer(serializers.ModelSerializer):
 
 
 class GraphSerializer(serializers.ModelSerializer):
-    components = GraphComponentSerializer(many=True)
+    graphcomponent_set = GraphComponentSerializer(many=True)
 
     class Meta:
         model = Graph
-        fields = ["id", "item_image", "annotation", "allograph", "components", "hand"]
+        fields = ["id", "item_image", "annotation", "allograph", "graphcomponent_set", "hand"]
 
     def create(self, validated_data):
-        components_data = validated_data.pop("components")
+        components_data = validated_data.pop("graphcomponent_set")
         graph = Graph.objects.create(**validated_data)
-        # use the GraphComponentSerializer to create the components and features
         for component_data in components_data:
             features_data = component_data.pop("features")
             component = Graph.components.through.objects.create(graph=graph, **component_data)

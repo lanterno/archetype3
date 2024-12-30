@@ -51,7 +51,7 @@ components:
           type: integer
         hand:
           type: integer
-        components:
+        graphcomponent_set:
           type: array
           items:
             type: object

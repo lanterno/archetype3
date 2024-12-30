@@ -14,6 +14,7 @@ class APISchemaView(APIView):
             settings.BASE_DIR / "apps/symbols_structure/schema.yaml",
             settings.BASE_DIR / "apps/manuscripts/schema.yaml",
             settings.BASE_DIR / "apps/scribes/schema.yaml",
+            settings.BASE_DIR / "apps/annotations/schema.yaml",
         ]
         with open(core_file, encoding="utf-8") as file:
             core_object = yaml.load(file.read(), Loader=yaml.Loader)

@@ -24,7 +24,7 @@ class HandFactory(factory.django.DjangoModelFactory):
     name = factory.Faker("name")
     scribe = factory.SubFactory(ScribeFactory)
     script = factory.SubFactory(ScriptFactory)
-    item_part = factory.SubFactory("manuscripts.tests.factories.ItemPartFactory")
+    item_part = factory.SubFactory("apps.manuscripts.tests.factories.ItemPartFactory")
     date = factory.Faker("century")
     place = factory.Faker("city")
     description = factory.Faker("text")
