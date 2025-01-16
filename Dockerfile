@@ -17,7 +17,7 @@ COPY pyproject.toml ./
 COPY poetry.lock ./
 
 RUN poetry config installer.max-workers 10
-RUN poetry install --no-interaction --no-ansi -vvv
+RUN poetry install --no-interaction --no-ansi --no-root -vvv
 
 FROM python AS runtime
 COPY --from=deps_builder /deps/.venv /deps/.venv
