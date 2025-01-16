@@ -2,6 +2,7 @@ paths:
   /api/v1/manuscripts/graphs/:
     get:
       operationId: graphs-list
+      summary: List all annotations or filter by item_image and allograph
       parameters:
         - in: query
           name: item_image
@@ -22,9 +23,10 @@ paths:
                 items:
                   $ref: '#/components/schemas/Graph'
       tags:
-        - annotations
+        - Annotations
     post:
       operationId: graphs-create
+      summary: Create a new annotation
       requestBody:
         content:
           application/json:
@@ -36,6 +38,8 @@ paths:
             application/json:
               schema:
                 type: object
+      tags:
+        - Annotations
 components:
   schemas:
     Graph:
