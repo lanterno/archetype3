@@ -2,7 +2,7 @@
 
 FROM python:3.12-slim AS python
 ENV PYTHONUNBUFFERED=true
-LABEL org.opencontainers.image.source="https://github.com/lanterno/archetype3"
+LABEL org.opencontainers.image.source="https://github.com/archetype-pal/archetype3"
 LABEL authors="ahmed.elghareeb@proton.com"
 
 FROM python AS deps_builder

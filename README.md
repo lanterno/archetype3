@@ -34,7 +34,7 @@ the values from `config/test.env`
 
 ## Deployment
 The backend is released as a docker image using the github packages services:  
-https://github.com/lanterno/archetype3/pkgs/container/archetype3
+https://github.com/archetype-pal/archetype3/pkgs/container/archetype3
 
 If you don't have specific requirements for deployment, the compose configuration is
 a good way to start deploying the system.
